@@ -4,7 +4,7 @@ from typing import Dict, Optional
 import spotipy
 from spotipy.oauth2 import SpotifyClientCredentials
 
-from config import config
+from src.config import config
 
 
 class SpotifyService:

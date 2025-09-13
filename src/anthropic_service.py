@@ -2,7 +2,7 @@ from typing import Optional
 
 import anthropic
 
-from config import config
+from src.config import config
 
 
 class AnthropicService:

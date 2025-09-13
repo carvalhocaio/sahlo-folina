@@ -2,9 +2,9 @@ import asyncio
 import sys
 from datetime import datetime
 
-from anthropic_service import AnthropicService
-from discord_service import DiscordService
-from spotify_service import SpotifyService
+from src.anthropic_service import AnthropicService
+from src.discord_service import DiscordService
+from src.spotify_service import SpotifyService
 
 
 async def main():

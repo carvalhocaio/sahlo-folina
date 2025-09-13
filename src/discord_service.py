@@ -3,7 +3,7 @@ from typing import Dict
 
 import aiohttp
 
-from config import config
+from src.config import config
 
 
 class DiscordService:
