@@ -10,7 +10,7 @@ class DiscordService:
     def __init__(self):
         self.webhook_url = config.DISCORD_WEBHOOK_URL
 
-    async def send_daily_song(self, track_data: Dict, analysis: str) -> bool:
+    async def send_daily_song(self, track_data: Dict) -> bool:
         """Envia a música diária para o canal do Discord via webhook"""
 
         if not self.webhook_url:
@@ -22,13 +22,6 @@ class DiscordService:
             "title": "Sahlo Folina - Música do Dia",
             "description": f"**{track_data['name']}**\n*{track_data['album']}* • {track_data.get('release_date', 'N/A')[:4] if track_data.get('release_date') else 'N/A'}\n\n[Ouvir no Spotify]({track_data['spotify_url']})",
             "color": 0xFF0000,
-            "fields": [
-                {
-                    "name": "Sobre a música",
-                    "value": analysis,
-                    "inline": False,
-                }
-            ],
             "footer": {
                 "text": "Twenty One Pilots Daily Song • FPE |-/",
                 "icon_url": "https://i.scdn.co/image/ab6761610000e5eb196972172c81d18b7db34d9e",
