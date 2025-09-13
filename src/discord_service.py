@@ -20,7 +20,7 @@ class DiscordService:
         # Criar embed
         embed = {
             "title": "Sahlo Folina - Música do Dia",
-            "description": f"**{track_data['name']}**\n*{track_data['album']}* • {track_data['release_date'][:4]}\n\n[Ouvir no Spotify]({track_data['spotify_url']})",
+            "description": f"**{track_data['name']}**\n*{track_data['album']}* • {track_data.get('release_date', 'N/A')[:4] if track_data.get('release_date') else 'N/A'}\n\n[Ouvir no Spotify]({track_data['spotify_url']})",
             "color": 0xFF0000,
             "fields": [
                 {

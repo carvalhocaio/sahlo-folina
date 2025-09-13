@@ -1,5 +1,5 @@
 run:
-	python src/main.py
+	python -m src.main
 
 lint:
 	ruff check . && ruff check . --diff
