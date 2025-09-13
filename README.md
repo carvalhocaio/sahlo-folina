@@ -1,33 +1,30 @@
 # Sahlo Folina
 
-Bot automatizado que seleciona músicas aleatórias do Twenty One Pilots de uma playlist no Spotify, gera análises musicais detalhadas usando Anthropic Claude AI e envia para um canal do Discord via webhook.
+Bot automatizado que seleciona músicas aleatórias do Twenty One Pilots de uma playlist no Spotify e envia para um canal do Discord via webhook.
 
 ## Objetivo
 
 O **Sahlo Folina** é um projeto que conecta fãs do Twenty One Pilots através da música diária. O bot:
 
 - Seleciona aleatoriamente uma música de uma playlist específica do Spotify
-- Gera análises interessantes e envolventes sobre a música usando IA
 - Envia a música do dia para um canal do Discord com embed personalizado
-- Mantém a comunidade engajada com conteúdo musical relevante
 
 ## Funcionalidades
 
 - **Seleção Aleatória**: Busca músicas aleatórias de playlist do Spotify
-- **Análise Inteligente**: Gera análises musicais usando Anthropic Claude
 - **Integração Discord**: Envia embeds formatados para canais do Discord
 - **Design Personalizado**: Visual temático do Twenty One Pilots
-- **Links Diretos**: Links para Spotify e previews quando disponíveis
+- **Links Diretos**: Links para Spotify
 
 ##  Estrutura do Projeto
 
 ```
 sahlo-folina/
 ├── src/
+│   ├── __init__.py             # Inicialização do pacote
 │   ├── main.py                 # Arquivo principal
 │   ├── config.py               # Configurações e variáveis de ambiente
 │   ├── spotify_service.py      # Serviço de integração com Spotify
-│   ├── anthropic_service.py    # Serviço de IA da Anthropic
 │   └── discord_service.py      # Serviço de webhook do Discord
 ├── .env.example                # Exemplo de variáveis de ambiente
 ├── requirements.txt            # Dependências do projeto
@@ -43,13 +40,11 @@ sahlo-folina/
 
 ### Bibliotecas Python
 - `spotipy==2.23.0` - Integração com Spotify Web API
-- `anthropic>=0.25.0` - Cliente da Anthropic Claude AI
 - `python-dotenv==1.0.0` - Gerenciamento de variáveis de ambiente
 - `aiohttp==3.9.1` - Cliente HTTP assíncrono para Discord webhooks
 
 ### APIs Necessárias
 - **Spotify Web API** - Para acessar informações das músicas
-- **Anthropic API** - Para gerar análises musicais com Claude
 - **Discord Webhook** - Para enviar mensagens para canais do Discord
 
 ## Configuração
@@ -72,9 +67,6 @@ SPOTIFY_PLAYLIST_ID=your_twenty_one_pilots_playlist_id
 
 # Discord Webhook
 DISCORD_WEBHOOK_URL=your_discord_webhook_url
-
-# Anthropic API
-ANTHROPIC_API_KEY=your_anthropic_api_key
 ```
 
 ### 2. Como Obter as Credenciais
@@ -84,11 +76,6 @@ ANTHROPIC_API_KEY=your_anthropic_api_key
 2. Crie um novo app
 3. Copie o Client ID e Client Secret
 4. Para o Playlist ID, use o ID da playlist do Twenty One Pilots
-
-#### Anthropic API
-1. Acesse [Anthropic Console](https://console.anthropic.com/)
-2. Crie uma conta e obtenha sua API key
-3. Configure créditos se necessário
 
 #### Discord Webhook
 1. No seu servidor Discord, vá em Configurações do Canal
@@ -160,7 +147,7 @@ O projeto usa **Ruff** para formatação e linting do código Python:
 
 ### Estrutura de Código
 
-- **Modular**: Cada serviço (Spotify, Anthropic, Discord) em arquivo separado
+- **Modular**: Cada serviço (Spotify, Discord) em arquivo separado
 - **Async/Await**: Operações assíncronas para melhor performance
 - **Type Hints**: Tipagem Python para melhor documentação
 - **Error Handling**: Tratamento de erros em todas as operações
@@ -171,7 +158,6 @@ O projeto usa **Ruff** para formatação e linting do código Python:
 2. Execute o bot: `python src/main.py`
 3. O bot irá:
   - Buscar uma música aleatória da playlist
-  - Gerar uma análise usando Claude AI
   - Enviar para o Discord com embed formatado
 
 ## Contribuindo
