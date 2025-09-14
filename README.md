@@ -1,63 +1,63 @@
 # Sahlo Folina
 
-Bot automatizado que seleciona músicas aleatórias do Twenty One Pilots de uma playlist no Spotify e envia para um canal do Discord via webhook.
+Automated bot that selects random Twenty One Pilots songs from a Spotify playlist and sends them to a Discord channel via webhook.
 
-## Objetivo
+## Purpose
 
-O **Sahlo Folina** é um projeto que conecta fãs do Twenty One Pilots através da música diária. O bot:
+**Sahlo Folina** is a project that connects Twenty One Pilots fans through daily music. The bot:
 
-- Seleciona aleatoriamente uma música de uma playlist específica do Spotify
-- Envia a música do dia para um canal do Discord com embed personalizado
+- Randomly selects a song from a specific Spotify playlist
+- Sends the song of the day to a Discord channel with a custom embed
 
-## Funcionalidades
+## Features
 
-- **Seleção Aleatória**: Busca músicas aleatórias de playlist do Spotify
-- **Integração Discord**: Envia embeds formatados para canais do Discord
-- **Design Personalizado**: Visual temático do Twenty One Pilots
-- **Links Diretos**: Links para Spotify
+- **Random Selection**: Fetches random songs from Spotify playlist
+- **Discord Integration**: Sends formatted embeds to Discord channels
+- **Custom Design**: Twenty One Pilots themed visuals
+- **Direct Links**: Links to Spotify
 
-##  Estrutura do Projeto
+## Project Structure
 
 ```
 sahlo-folina/
 ├── src/
-│   ├── __init__.py             # Inicialização do pacote
-│   ├── main.py                 # Arquivo principal
-│   ├── config.py               # Configurações e variáveis de ambiente
-│   ├── spotify_service.py      # Serviço de integração com Spotify
-│   └── discord_service.py      # Serviço de webhook do Discord
-├── .env.example                # Exemplo de variáveis de ambiente
-├── requirements.txt            # Dependências do projeto
-├── Makefile                    # Comandos de desenvolvimento
-└── README.md                   # Este arquivo
+│   ├── __init__.py             # Package initialization
+│   ├── main.py                 # Main file
+│   ├── config.py               # Configuration and environment variables
+│   ├── spotify_service.py      # Spotify integration service
+│   └── discord_service.py      # Discord webhook service
+├── .env.example                # Environment variables example
+├── requirements.txt            # Project dependencies
+├── Makefile                    # Development commands
+└── README.md                   # This file
 ```
 
-## Dependências
+## Dependencies
 
-### Requisitos do Sistema
+### System Requirements
 - Python 3.12+
-- Ambiente virtual Python
+- Python virtual environment
 
-### Bibliotecas Python
-- `spotipy==2.23.0` - Integração com Spotify Web API
-- `python-dotenv==1.0.0` - Gerenciamento de variáveis de ambiente
-- `aiohttp==3.9.1` - Cliente HTTP assíncrono para Discord webhooks
+### Python Libraries
+- `spotipy==2.23.0` - Spotify Web API integration
+- `python-dotenv==1.0.0` - Environment variables management
+- `aiohttp==3.9.1` - Asynchronous HTTP client for Discord webhooks
 
-### APIs Necessárias
-- **Spotify Web API** - Para acessar informações das músicas
-- **Discord Webhook** - Para enviar mensagens para canais do Discord
+### Required APIs
+- **Spotify Web API** - To access song information
+- **Discord Webhook** - To send messages to Discord channels
 
-## Configuração
+## Configuration
 
-### 1. Variáveis de Ambiente
+### 1. Environment Variables
 
-Copie o arquivo `.env.example` para `.env`:
+Copy the `.env.example` file to `.env`:
 
 ```bash
 cp .env.example .env
 ```
 
-Configure as seguintes variáveis:
+Configure the following variables:
 
 ```env
 # Spotify API
@@ -69,104 +69,104 @@ SPOTIFY_PLAYLIST_ID=your_twenty_one_pilots_playlist_id
 DISCORD_WEBHOOK_URL=your_discord_webhook_url
 ```
 
-### 2. Como Obter as Credenciais
+### 2. How to Obtain Credentials
 
 #### Spotify API
-1. Acesse [Spotify for Developers](https://developer.spotify.com/)
-2. Crie um novo app
-3. Copie o Client ID e Client Secret
-4. Para o Playlist ID, use o ID da playlist do Twenty One Pilots
+1. Go to [Spotify for Developers](https://developer.spotify.com/)
+2. Create a new app
+3. Copy the Client ID and Client Secret
+4. For the Playlist ID, use the Twenty One Pilots playlist ID
 
 #### Discord Webhook
-1. No seu servidor Discord, vá em Configurações do Canal
-2. Integrações > Webhooks > Novo Webhook
-3. Copie a URL do webhook
+1. In your Discord server, go to Channel Settings
+2. Integrations > Webhooks > New Webhook
+3. Copy the webhook URL
 
-## Instalação e Execução
+## Installation and Execution
 
-### 1. Clone o Repositório
+### 1. Clone the Repository
 ```bash
-git clone <url-do-repositorio>
+git clone <repository-url>
 cd sahlo-folina
 ```
 
-### 2. Configure o Ambiente Virtual
+### 2. Set up Virtual Environment
 ```bash
 python -m venv .venv
 source .venv/bin/activate  # Linux/Mac
-# ou
+# or
 .venv\Scripts\activate     # Windows
 ```
 
-### 3. Instale as Dependências
+### 3. Install Dependencies
 ```bash
-# Com uv (recomendado)
+# With uv (recommended)
 uv pip install -r requirements.txt
 
-# Ou com pip tradicional
+# Or with traditional pip
 pip install -r requirements.txt
 ```
 
-### 4. Configure as Variáveis de Ambiente
-Edite o arquivo `.env` com suas credenciais (veja seção de Configuração).
+### 4. Configure Environment Variables
+Edit the `.env` file with your credentials (see Configuration section).
 
-### 5. Execute o Bot
+### 5. Run the Bot
 ```bash
-# Ative o ambiente virtual
+# Activate virtual environment
 source .venv/bin/activate
 
-# Execute o bot
+# Run the bot
 python src/main.py
 
-# Ou usando o Makefile
+# Or using Makefile
 make run
 ```
 
-## Desenvolvimento
+## Development
 
-### Comandos Disponíveis (Makefile)
+### Available Commands (Makefile)
 
 ```bash
-# Executar o projeto
+# Run the project
 make run
 
-# Verificar código (linting)
+# Check code (linting)
 make lint
 
-# Formatar código automaticamente
+# Format code automatically
 make format
 ```
 
-### Formatação e Linting
+### Formatting and Linting
 
-O projeto usa **Ruff** para formatação e linting do código Python:
+The project uses **Ruff** for Python code formatting and linting:
 
-- Configuração em `ruff.toml`
-- Executar verificações: `make lint`
-- Formatação automática: `make format`
+- Configuration in `ruff.toml`
+- Run checks: `make lint`
+- Automatic formatting: `make format`
 
-### Estrutura de Código
+### Code Structure
 
-- **Modular**: Cada serviço (Spotify, Discord) em arquivo separado
-- **Async/Await**: Operações assíncronas para melhor performance
-- **Type Hints**: Tipagem Python para melhor documentação
-- **Error Handling**: Tratamento de erros em todas as operações
+- **Modular**: Each service (Spotify, Discord) in separate files
+- **Async/Await**: Asynchronous operations for better performance
+- **Type Hints**: Python typing for better documentation
+- **Error Handling**: Error handling in all operations
 
-## Como Usar
+## How to Use
 
-1. Configure todas as variáveis de ambiente
-2. Execute o bot: `python src/main.py`
-3. O bot irá:
-  - Buscar uma música aleatória da playlist
-  - Enviar para o Discord com embed formatado
+1. Configure all environment variables
+2. Run the bot: `python src/main.py`
+3. The bot will:
+  - Fetch a random song from the playlist
+  - Send it to Discord with formatted embed
 
-## Contribuindo
+## Contributing
 
-1. Fork o projeto
-2. Crie uma branch para sua feature (`git checkout -b feature/:name`)
-3. Faça commit das mudanças (`git commit -m 'Add some feature'`)
-4. Push para a branch (`git push origin feature/:name`)
-5. Abra um Pull Request
+1. Fork the project
+2. Create a branch for your feature (`git checkout -b feature/:name`)
+3. Commit your changes (`git commit -m 'Add some feature'`)
+4. Push to the branch (`git push origin feature/:name`)
+5. Open a Pull Request
 
 
 ---

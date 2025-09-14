@@ -1,38 +1,37 @@
 import asyncio
 import sys
-from datetime import datetime
 
 from src.discord_service import DiscordService
 from src.spotify_service import SpotifyService
 
 
 async def main():
-    """Função principal do bot Sahlo Folina"""
+    """Main function of the Sahlo Folina bot"""
 
-    print("Iniciando Sahlo Folina...")
+    print("Starting Sahlo Folina...")
 
     spotify_service = SpotifyService()
     discord_service = DiscordService()
 
     try:
-        print("-> buscando música aleatória no Spotify...")
+        print("-> searching for random song on Spotify...")
         track = spotify_service.get_random_track_from_playlist()
 
         if not track:
-            print("-> não foi possível obter música do Spotify")
+            print("-> could not get song from Spotify")
             sys.exit(1)
 
-        print(f"-> música selecionada: {track['name']} - {track['artist']}")
-        print(f"-> álbum: {track['album']}")
+        print(f"-> selected song: {track['name']} - {track['artist']}")
+        print(f"-> album: {track['album']}")
 
-        print("-> enviando para Discord...")
+        print("-> sending to Discord...")
         success = await discord_service.send_daily_song(track)
 
         if success:
-            print("-> Sahlo Folina executado com sucesso!")
-            print(f"-> música do dia: {track['name']}")
+            print("-> Sahlo Folina executed successfully!")
+            print(f"-> song of the day: {track['name']}")
         else:
-            print("-> erro ao enviar para Discord")
+            print("-> error sending to Discord")
             sys.exit(1)
 
     except Exception as e:

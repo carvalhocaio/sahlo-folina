@@ -18,16 +18,16 @@ class SpotifyService:
         )
 
     def get_random_track_from_playlist(self) -> Optional[Dict]:
-        """Busca uma música aleatória da playlist do Twenty One Pilots"""
+        """Fetches a random song from the Twenty One Pilots playlist"""
         try:
-            # Primeira chamada para obter informações da playlist
+            # First call to get playlist information
             playlist_info = self.spotify.playlist(config.SPOTIFY_PLAYLIST_ID)
             total_tracks = playlist_info["tracks"]["total"]
 
-            # Escolhe um offset aleatório
+            # Choose a random offset
             random_offset = random.randint(0, max(0, total_tracks - 1))
 
-            # Busca uma música no offset aleatório
+            # Fetch a song at the random offset
             results = self.spotify.playlist_tracks(
                 config.SPOTIFY_PLAYLIST_ID,
                 offset=random_offset,
@@ -53,5 +53,5 @@ class SpotifyService:
                 }
 
         except Exception as e:
-            print(f"-> erro ao buscar música no Spotify: {e}")
+            print(f"-> error searching for song on Spotify: {e}")
             return None

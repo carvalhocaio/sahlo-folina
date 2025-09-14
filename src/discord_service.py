@@ -11,16 +11,16 @@ class DiscordService:
         self.webhook_url = config.DISCORD_WEBHOOK_URL
 
     async def send_daily_song(self, track_data: Dict) -> bool:
-        """Envia a música diária para o canal do Discord via webhook"""
+        """Sends the daily song to the Discord channel via webhook"""
 
         if not self.webhook_url:
-            print("❌ DISCORD_WEBHOOK_URL não configurada!")
+            print("❌ DISCORD_WEBHOOK_URL not configured!")
             return False
 
-        # Criar embed
+        # Create embed
         embed = {
-            "title": "Sahlo Folina - Música do Dia",
-            "description": f"**{track_data['name']}**\n*{track_data['album']}* • {track_data.get('release_date', 'N/A')[:4] if track_data.get('release_date') else 'N/A'}\n\n[Ouvir no Spotify]({track_data['spotify_url']})",
+            "title": "Sahlo Folina - Song of the Day",
+            "description": f"**{track_data['name']}**\n*{track_data['album']}* • {track_data.get('release_date', 'N/A')[:4] if track_data.get('release_date') else 'N/A'}\n\n[Listen on Spotify]({track_data['spotify_url']})",
             "color": 0xFF0000,
             "footer": {
                 "text": "Twenty One Pilots Daily Song • FPE |-/",
@@ -28,11 +28,11 @@ class DiscordService:
             },
         }
 
-        # Adicionar imagem do álbum
+        # Add album image
         if track_data.get("image_url"):
             embed["thumbnail"] = {"url": track_data["image_url"]}
 
-        # Payload do webhook
+        # Webhook payload
         payload = {"embeds": [embed]}
 
         try:
@@ -41,14 +41,14 @@ class DiscordService:
                     self.webhook_url, json=payload
                 ) as response:
                     if response.status == HTTPStatus.NO_CONTENT:
-                        print("-> Mensagem enviada com sucesso!")
+                        print("-> Message sent successfully!")
                         return True
                     else:
-                        print(f"-> Erro: HTTP {response.status}")
+                        print(f"-> Error: HTTP {response.status}")
                         error_text = await response.text()
                         print(f"-> err: {error_text}")
                         return False
 
         except Exception as e:
-            print(f"-> Erro ao enviar webhook: {e}")
+            print(f"-> Error sending webhook: {e}")
             return False

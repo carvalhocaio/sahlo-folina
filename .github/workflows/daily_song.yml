@@ -2,9 +2,9 @@ name: Daily Sahlo Folina Song
 
 on:
   schedule:
-    # Executa todos os dias às 9h (horário de Cuiabá é UTC-4)
+    # Runs every day at 9 AM (Cuiabá time is UTC-4)
     - cron: "0 13 * * *" # 13:00 UTC = 09:00 BRT
-  workflow_dispatch: # Permite execução manual
+  workflow_dispatch: # Allows manual execution
 
 jobs:
   send-daily-song:
